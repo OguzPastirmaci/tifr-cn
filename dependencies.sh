@@ -44,9 +44,18 @@ yum-config-manager --add-repo https://yum.repos.intel.com/mkl/setup/intel-mkl.re
 rpm --import https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
 yum -y install intel-mkl-2017.4-061.x86_64
 
-# FFTW 2 & FFTW 3
-yum -y install fftw2-devel
-yum -y install fftw-devel
+# FFTW 2
+cd ~
+wget http://www.fftw.org/fftw-2.1.5.tar.gz
+tar zxvf fftw-2.1.5.tar.gz
+cd fftw-2.1.5
+./configure --enable-type-prefix --enable-mpi
+make
+make install
+make clean
+./configure --enable-float --enable-type-prefix --enable-mpi
+make
+make install
 
 # CUDA 10
 [ -f /usr/local/cuda/bin/nvcc ] && ln -s /usr/local/cuda/bin/nvcc /usr/bin/nvcc
