@@ -15,7 +15,7 @@ cd gcc-5.4.0-build
 ../gcc-5.4.0/configure --enable-languages=c,c++ --disable-multilib
 make -j$(nproc) && make install
 export PATH=/usr/local/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH
+echo 'export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
 
 # HDF5 1.8.16
 cd ~/dependencies
@@ -38,6 +38,7 @@ mkdir /opt/gsl
 make
 make check
 make install
+echo 'export LD_LIBRARY_PATH=/opt/gsl/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
 
 # INTEL MKL 2017
 yum-config-manager --add-repo https://yum.repos.intel.com/setup/intelproducts.repo
