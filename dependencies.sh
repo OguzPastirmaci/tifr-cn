@@ -30,7 +30,7 @@ wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.16/bin/lin
 mkdir -p /opt/hdf5
 cd /opt/hdf5
 tar zxvf $INSTALL_DIR/hdf5-1.8.16-linux-centos7-x86_64-gcc483-shared.tar.gz
-ln -s hdf5-1.8.16-linux-centos7-x86_64-gcc483-shared latest
+ln -sfn hdf5-1.8.16-linux-centos7-x86_64-gcc483-shared latest
 cd /opt/hdf5/latest/bin/
 ./h5redeploy -force
 echo "export PATH=$PATH:/opt/hdf5/latest/bin" | sudo tee /etc/profile.d/hdf5.sh
