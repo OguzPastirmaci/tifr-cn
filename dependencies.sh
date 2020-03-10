@@ -23,7 +23,7 @@ cd $INSTALL_DIR
 wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.16/bin/linux-centos7-x86_64-gcc483/hdf5-1.8.16-linux-centos7-x86_64-gcc483-shared.tar.gz
 mkdir -p /opt/hdf5
 cd /opt/hdf5
-tar zxvf ~/hdf5-1.8.16-linux-centos7-x86_64-gcc483-shared.tar.gz
+tar zxvf $INSTALL_DIR/hdf5-1.8.16-linux-centos7-x86_64-gcc483-shared.tar.gz
 ln -s hdf5-1.8.16-linux-centos7-x86_64-gcc483-shared latest
 cd /opt/hdf5/latest/bin/
 ./h5redeploy -force
