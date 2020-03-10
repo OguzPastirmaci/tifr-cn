@@ -2,12 +2,13 @@
 
 set -ex
 
+INSTALL_DIR="/home/opc/dependencies"
 yum install -y oracle-epel-release-el7 oracle-release-el7
 
-mkdir -p ~/dependencies
+mkdir -p $INSTALL_DIR
 # gcc 5.4.0
 yum -y install gcc-c++ gmp-devel mpfr-devel libmpc-devel
-cd ~/dependencies
+cd $INSTALL_DIR
 wget https://ftp.gnu.org/gnu/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2
 tar jxvf gcc-5.4.0.tar.bz2
 mkdir gcc-5.4.0-build
@@ -18,7 +19,7 @@ export PATH=/usr/local/bin:$PATH
 echo "export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH" >> ~/.bashrc
 
 # HDF5 1.8.16
-cd ~/dependencies
+cd $INSTALL_DIR
 wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.16/bin/linux-centos7-x86_64-gcc483/hdf5-1.8.16-linux-centos7-x86_64-gcc483-shared.tar.gz
 mkdir -p /opt/hdf5
 cd /opt/hdf5
@@ -29,7 +30,7 @@ cd /opt/hdf5/latest/bin/
 echo "export PATH=$PATH:/opt/hdf5/latest/bin" | sudo tee /etc/profile.d/hdf5.sh
 
 # GSL 2.4
-cd ~/dependencies
+cd $INSTALL_DIR
 wget ftp://ftp.gnu.org/gnu/gsl/gsl-2.4.tar.gz
 tar zxvf gsl-2.4.tar.gz
 cd gsl-2.4
@@ -47,7 +48,7 @@ rpm --import https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRO
 yum -y install intel-mkl-2017.4-061.x86_64
 
 # FFTW 2
-cd ~/dependencies
+cd $INSTALL_DIR
 wget http://www.fftw.org/fftw-2.1.5.tar.gz
 tar zxvf fftw-2.1.5.tar.gz
 cd fftw-2.1.5
