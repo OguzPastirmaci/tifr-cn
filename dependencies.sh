@@ -6,9 +6,9 @@ INSTALL_DIR="/home/opc/dependencies"
 yum install -y oracle-epel-release-el7 oracle-release-el7
 
 # OPENMPI
-ln -s /usr/mpi/gcc/openmpi-3.1.1rc1/bin/mpicc /usr/bin/mpicc
-ln -s /usr/mpi/gcc/openmpi-3.1.1rc1/bin/mpirun /usr/bin/mpirun
-ln -s /usr/mpi/gcc/openmpi-3.1.1rc1/bin/mpiexec /usr/bin/mpiexec
+ln -sfn /usr/mpi/gcc/openmpi-3.1.1rc1/bin/mpicc /usr/bin/mpicc
+ln -sfn /usr/mpi/gcc/openmpi-3.1.1rc1/bin/mpirun /usr/bin/mpirun
+ln -sfn /usr/mpi/gcc/openmpi-3.1.1rc1/bin/mpiexec /usr/bin/mpiexec
 
 mkdir -p $INSTALL_DIR
 # gcc 5.4.0
