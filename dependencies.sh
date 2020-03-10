@@ -39,7 +39,7 @@ cd $INSTALL_DIR
 wget ftp://ftp.gnu.org/gnu/gsl/gsl-2.4.tar.gz
 tar zxvf gsl-2.4.tar.gz
 cd gsl-2.4
-mkdir /opt/gsl
+mkdir -p /opt/gsl
 ./configure --prefix=/opt/gsl
 make
 make check
