@@ -15,7 +15,7 @@ cd gcc-5.4.0-build
 ../gcc-5.4.0/configure --enable-languages=c,c++ --disable-multilib
 make -j$(nproc) && make install
 export PATH=/usr/local/bin:$PATH
-echo 'export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+echo "export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH" >> ~/.bashrc
 
 # HDF5 1.8.16
 cd ~/dependencies
@@ -26,7 +26,7 @@ tar zxvf ~/hdf5-1.8.16-linux-centos7-x86_64-gcc483-shared.tar.gz
 ln -s hdf5-1.8.16-linux-centos7-x86_64-gcc483-shared latest
 cd /opt/hdf5/latest/bin/
 ./h5redeploy -force
-echo 'export PATH=$PATH:/opt/hdf5/latest/bin' | sudo tee /etc/profile.d/hdf5.sh
+echo "export PATH=$PATH:/opt/hdf5/latest/bin" | sudo tee /etc/profile.d/hdf5.sh
 
 # GSL 2.4
 cd ~/dependencies
@@ -38,7 +38,7 @@ mkdir /opt/gsl
 make
 make check
 make install
-echo 'export LD_LIBRARY_PATH=/opt/gsl/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
+echo "export LD_LIBRARY_PATH=/opt/gsl/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
 
 # INTEL MKL 2017
 yum-config-manager --add-repo https://yum.repos.intel.com/setup/intelproducts.repo
