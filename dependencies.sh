@@ -12,6 +12,7 @@ ln -sfn /usr/mpi/gcc/openmpi-3.1.1rc1/bin/mpiexec /usr/bin/mpiexec
 
 rm -rf $INSTALL_DIR
 mkdir -p $INSTALL_DIR
+
 # gcc 5.4.0
 yum -y install gcc-c++ gmp-devel mpfr-devel libmpc-devel
 cd $INSTALL_DIR
@@ -22,7 +23,7 @@ cd gcc-5.4.0-build
 ../gcc-5.4.0/configure --enable-languages=c,c++ --disable-multilib
 make -j$(nproc) && make install
 export PATH=/usr/local/bin:$PATH
-echo "export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH" >> ~/.bashrc
+echo "export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH" | sudo tee /etc/profile.d/gcc.sh
 
 # HDF5 1.8.16
 cd $INSTALL_DIR
@@ -45,10 +46,10 @@ mkdir -p /opt/gsl
 make
 make check
 make install
-echo "export LD_LIBRARY_PATH=/opt/gsl/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
+echo "export LD_LIBRARY_PATH=/opt/gsl/lib:$LD_LIBRARY_PATH" | sudo tee /etc/profile.d/gsl.sh
 
 # INTEL MKL 2017
-yum-config-manager --add-repo https://yum.repos.intel.com/setup/intelproducts.repo
+#yum-config-manager --add-repo https://yum.repos.intel.com/setup/intelproducts.repo
 yum-config-manager --add-repo https://yum.repos.intel.com/mkl/setup/intel-mkl.repo
 rpm --import https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
 yum -y install intel-mkl-2017.4-061.x86_64
