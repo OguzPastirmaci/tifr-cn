@@ -10,6 +10,7 @@ ln -sfn /usr/mpi/gcc/openmpi-3.1.1rc1/bin/mpicc /usr/bin/mpicc
 ln -sfn /usr/mpi/gcc/openmpi-3.1.1rc1/bin/mpirun /usr/bin/mpirun
 ln -sfn /usr/mpi/gcc/openmpi-3.1.1rc1/bin/mpiexec /usr/bin/mpiexec
 
+rm -rf $INSTALL_DIR
 mkdir -p $INSTALL_DIR
 # gcc 5.4.0
 yum -y install gcc-c++ gmp-devel mpfr-devel libmpc-devel
