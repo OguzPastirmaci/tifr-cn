@@ -8,18 +8,6 @@ yum install -y oracle-epel-release-el7 oracle-release-el7
 rm -rf $INSTALL_DIR
 mkdir -p $INSTALL_DIR
 
-# gcc 5.4.0
-yum -y install gcc-c++ gmp-devel mpfr-devel libmpc-devel
-cd $INSTALL_DIR
-wget https://ftp.gnu.org/gnu/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2
-tar jxvf gcc-5.4.0.tar.bz2
-mkdir gcc-5.4.0-build
-cd gcc-5.4.0-build
-../gcc-5.4.0/configure --enable-languages=c,c++ --disable-multilib
-make -j$(nproc) && make install
-export PATH=/usr/local/bin:$PATH
-echo "export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH" | sudo tee /etc/profile.d/gcc.sh
-
 # OPENMPI
 cd $INSTALL_DIR
 yum groupinstall -y 'Development Tools'
