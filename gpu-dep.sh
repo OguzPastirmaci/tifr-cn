@@ -71,7 +71,7 @@ make
 make install
 
 # CUDA 10
-ln -s /usr/local/cuda/bin/nvcc /usr/bin/nvcc
+ln -sfn /usr/local/cuda/bin/nvcc /usr/bin/nvcc
 
 # PYTHON, NUMPY, SCIPY, MATPLOTLIB
 yum -y install python3
