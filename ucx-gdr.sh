@@ -2,12 +2,12 @@
 
 set -x
 
-export INSTALL_DIR=/home/opc/dependencies
+export INSTALL_DIR="/home/opc/mpi-cuda"
+export CUDA_VERSION=10.1
 export UCX_DIR=$INSTALL_DIR/ucx
-export OMPI_DIR=$INSTALL_DIR/ompi
 export GDR_DIR=$INSTALL_DIR/gdrcopy
 export LD_LIBRARY_PATH=$GDR_DIR/lib64:$LD_LIBRARY_PATH
-export CUDA_DIR=/usr/local/cuda-10.1
+export CUDA_DIR=/usr/local/cuda-$CUDA_VERSION
 export OMPI_INSTALL_VERSION=4.0.3
 
 mkdir -p $INSTALL_DIR
@@ -45,3 +45,12 @@ cd openmpi-$OMPI_INSTALL_VERSION
 ./configure --with-cuda=$CUDA_DIR --with-ucx=$UCX_DIR
 make -j$(nproc)
 make -j$(nproc) install
+
+# OSU
+cd $INSTALL_DIR
+wget https://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-5.6.2.tar.gz
+tar zxvf osu-micro-benchmarks-5.6.2.tar.gz
+cd osu-micro-benchmarks-5.6.2.tar.gz
+export PATH=/usr/local/cuda-10.1/bin:/usr/local/cuda-10.1/NsightCompute-2019.3${PATH:+:${PATH}}
+./configure CC=/usr/local/bin/mpicc CXX=/usr/local/bin/mpicxx --enable-cuda --with-cuda-include=/usr/local/cuda-$CUDA_VERSION/include --with-cuda-libpath=/usr/local/cuda-$CUDA_VERSION/lib64
+make -j$(nproc)
