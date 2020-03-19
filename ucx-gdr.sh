@@ -11,6 +11,7 @@ export CUDA_DIR=/usr/local/cuda-10.1
 export OMPI_VERSION=4.0.3
 
 mkdir -p $INSTALL_DIR
+yum install -y git
 
 # gdrcopy
 cd $INSTALL_DIR
