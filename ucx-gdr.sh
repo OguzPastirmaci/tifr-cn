@@ -8,6 +8,9 @@ export OMPI_DIR=$INSTALL_DIR/ompi
 export GDR_DIR=$INSTALL_DIR/gdrcopy
 export LD_LIBRARY_PATH=$GDR_DIR/lib64:$LD_LIBRARY_PATH
 export CUDA_DIR=/usr/local/cuda-10.1
+export OMPI_VERSION=4.0.3
+
+mkdir -p $INSTALL_DIR
 
 # gdrcopy
 cd $INSTALL_DIR
@@ -33,9 +36,9 @@ make -j$(nproc) install
 
 # OpenMPI
 cd $INSTALL_DIR
-wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.5.tar.gz
-tar zxvf openmpi-3.1.5.tar.gz
-cd openmpi-3.1.5
+https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-$OMPI_VERSION.tar.gz
+tar zxvf openmpi-OMPI_VERSION.tar.gz
+cd openmpi-OMPI_VERSION
 ./configure --with-cuda=$CUDA_DIR --with-ucx=$UCX_DIR
 make -j$(nproc)
 make -j$(nproc) install
