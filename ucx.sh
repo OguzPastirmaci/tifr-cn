@@ -7,7 +7,7 @@ export UCX_DIR=$INSTALL_DIR/ucx
 export OMPI_DIR=$INSTALL_DIR/ompi
 #export GDR_DIR=$INSTALL_DIR/gdrcopy
 export LD_LIBRARY_PATH=$GDR_DIR/lib64:$LD_LIBRARY_PATH
-export CUDA_DIR=/usr/local/cuda
+export CUDA_DIR=/usr/local/cuda-10.1
 
 # gdrcopy
 #cd $INSTALL_DIR
