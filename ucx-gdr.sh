@@ -13,7 +13,7 @@ export OMPI_INSTALL_VERSION=4.0.3
 mkdir -p $INSTALL_DIR
 yum install -y git
 
-# gdrcopy
+# GDRCopy
 cd $INSTALL_DIR
 git clone https://github.com/NVIDIA/gdrcopy.git
 yum groupinstall 'Development Tools' -y
@@ -45,7 +45,7 @@ cd openmpi-$OMPI_INSTALL_VERSION
 make -j$(nproc)
 make -j$(nproc) install
 
-# OSU
+# OSU Benchmarks
 cd $INSTALL_DIR
 wget https://mvapich.cse.ohio-state.edu/download/mvapich/osu-micro-benchmarks-5.6.2.tar.gz
 tar zxvf osu-micro-benchmarks-5.6.2.tar.gz
