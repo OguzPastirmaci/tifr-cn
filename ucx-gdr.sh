@@ -53,3 +53,5 @@ cd osu-micro-benchmarks-5.6.2
 export PATH=/usr/local/cuda-10.1/bin:/usr/local/cuda-10.1/NsightCompute-2019.3${PATH:+:${PATH}}
 ./configure CC=/usr/local/bin/mpicc CXX=/usr/local/bin/mpicxx --enable-cuda --with-cuda-include=/usr/local/cuda-$CUDA_VERSION/include --with-cuda-libpath=/usr/local/cuda-$CUDA_VERSION/lib64
 make -j$(nproc)
+
+rm *.tar.gz
