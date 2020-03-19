@@ -16,7 +16,6 @@ yum install -y git
 # gdrcopy
 cd $INSTALL_DIR
 git clone https://github.com/NVIDIA/gdrcopy.git
-yum install check check-devel subunit subunit-devel -y
 yum groupinstall 'Development Tools' -y
 yum install rpm-build make check check-devel subunit subunit-devel -y
 cd $INSTALL_DIR/gdrcopy/packages
