@@ -31,7 +31,6 @@ cd build
 make
 make install
 
-
 # OpenMPI
 cd $INSTALL_DIR
 wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.3.tar.gz
