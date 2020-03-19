@@ -10,6 +10,8 @@ export LD_LIBRARY_PATH=$GDR_DIR/lib64:$LD_LIBRARY_PATH
 export CUDA_DIR=/usr/local/cuda-$CUDA_VERSION
 export OMPI_INSTALL_VERSION=4.0.3
 
+systemctl stop firewalld
+
 mkdir -p $INSTALL_DIR
 yum install -y git
 
