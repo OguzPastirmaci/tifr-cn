@@ -33,9 +33,9 @@ make install
 
 # OpenMPI
 cd $INSTALL_DIR
-wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.3.tar.gz
-tar zxvf openmpi-4.0.3.tar.gz
-cd openmpi-4.0.3
+wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.5.tar.gz
+tar zxvf openmpi-3.1.5.tar.gz
+cd openmpi-3.1.5
 ./configure --with-cuda=$CUDA_DIR --with-ucx=$UCX_DIR
 make
 make install
