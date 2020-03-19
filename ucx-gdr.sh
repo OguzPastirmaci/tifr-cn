@@ -8,7 +8,7 @@ export OMPI_DIR=$INSTALL_DIR/ompi
 export GDR_DIR=$INSTALL_DIR/gdrcopy
 export LD_LIBRARY_PATH=$GDR_DIR/lib64:$LD_LIBRARY_PATH
 export CUDA_DIR=/usr/local/cuda-10.1
-export OMPI_VERSION=4.0.3
+export OMPI_INSTALL_VERSION=4.0.3
 
 mkdir -p $INSTALL_DIR
 yum install -y git
@@ -18,6 +18,7 @@ cd $INSTALL_DIR
 yum install check check-devel subunit subunit-devel -y
 yum groupinstall 'Development Tools' -y
 yum install rpm-build make check check-devel subunit subunit-devel -y
+cd packages
 CUDA=$CUDA_DIR ./build-rpm-packages.sh
 rpm -Uvh gdrcopy-kmod-2.0-4.x86_64.rpm
 rpm -Uvh gdrcopy-2.0-4.x86_64.rpm
@@ -37,9 +38,9 @@ make -j$(nproc) install
 
 # OpenMPI
 cd $INSTALL_DIR
-https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-$OMPI_VERSION.tar.gz
-tar zxvf openmpi-$OMPI_VERSION.tar.gz
-cd openmpi-$OMPI_VERSION
+https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-$OMPI_INSTALL_VERSION.tar.gz
+tar zxvf openmpi-$OMPI_INSTALL_VERSION.tar.gz
+cd openmpi-$OMPI_INSTALL_VERSION
 ./configure --with-cuda=$CUDA_DIR --with-ucx=$UCX_DIR
 make -j$(nproc)
 make -j$(nproc) install
