@@ -39,7 +39,7 @@ make -j$(nproc) install
 
 # OpenMPI
 cd $INSTALL_DIR
-https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-$OMPI_INSTALL_VERSION.tar.gz
+wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-$OMPI_INSTALL_VERSION.tar.gz
 tar zxvf openmpi-$OMPI_INSTALL_VERSION.tar.gz
 cd openmpi-$OMPI_INSTALL_VERSION
 ./configure --with-cuda=$CUDA_DIR --with-ucx=$UCX_DIR
