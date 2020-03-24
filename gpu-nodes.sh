@@ -18,11 +18,11 @@ rm -rf $INSTALL_DIR
 mkdir -p $INSTALL_DIR
 
 # CUDA
+yum remove -y "*cublas*" "cuda*"
 if [ -f /usr/local/cuda/bin/uninstall_cuda_8.0.pl ]
 then
     /usr/local/cuda/bin/uninstall_cuda_8.0.pl
 else
-    yum remove -y "*cublas*" "cuda*"
     rm -rf $CUDA_DIR
 fi
 
