@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -x
 
 export INSTALL_DIR="/home/opc/dependencies"
 export CUDA_VERSION=8.0
@@ -18,7 +18,7 @@ mkdir -p $INSTALL_DIR
 
 # CUDA
 yum remove -y "*cublas*" "cuda*"
-rm -rf /usr/local/cuda-8.0
+rm -rf $CUDA_DIR
 
 cd $INSTALL_DIR
 wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
@@ -30,16 +30,16 @@ echo "export PATH=/usr/local/cuda-8.0/bin:/usr/local/cuda-8.0/NsightCompute-2019
 echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64" >> ~/.bashrc
 
 # gcc 5.4.0
-yum -y install gcc-c++ gmp-devel mpfr-devel libmpc-devel
-cd $INSTALL_DIR
-wget https://ftp.gnu.org/gnu/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2
-tar jxvf gcc-5.4.0.tar.bz2
-mkdir gcc-5.4.0-build
-cd gcc-5.4.0-build
-../gcc-5.4.0/configure --enable-languages=c,c++ --disable-multilib
-make -j$(nproc) && make install
-export PATH=/usr/local/bin:$PATH
-echo "export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH" | sudo tee /etc/profile.d/gcc.sh
+#yum -y install gcc-c++ gmp-devel mpfr-devel libmpc-devel
+#cd $INSTALL_DIR
+#wget https://ftp.gnu.org/gnu/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2
+#tar jxvf gcc-5.4.0.tar.bz2
+#mkdir gcc-5.4.0-build
+#cd gcc-5.4.0-build
+#../gcc-5.4.0/configure --enable-languages=c,c++ --disable-multilib
+#make -j$(nproc) && make install
+#export PATH=/usr/local/bin:$PATH
+#echo "export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH" | sudo tee /etc/profile.d/gcc.sh
 
 # GDRCopy
 cd $INSTALL_DIR
