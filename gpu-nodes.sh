@@ -18,8 +18,13 @@ rm -rf $INSTALL_DIR
 mkdir -p $INSTALL_DIR
 
 # CUDA
-yum remove -y "*cublas*" "cuda*"
-rm -rf $CUDA_DIR
+if [ -f /usr/local/cuda/bin/uninstall_cuda_8.0.pl ]
+then
+    /usr/local/cuda/bin/uninstall_cuda_8.0.pl
+else
+    yum remove -y "*cublas*" "cuda*"
+    rm -rf $CUDA_DIR
+fi
 
 cd $INSTALL_DIR
 wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
@@ -32,7 +37,7 @@ echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64" >> ~/.b
 
 # gcc 5.4.0
 CURRENT_GCC_VERSION=$(gcc --version | grep gcc | awk '{print $3}')
-if [ "$GCC_VERSION" != "$CURRENT_GCC_VERSION" ]
+if [ "$CURRENT_GCC_VERSION" != "$GCC_VERSION" ]
 then
     yum -y install gcc-c++ gmp-devel mpfr-devel libmpc-devel
     cd $INSTALL_DIR
