@@ -25,8 +25,8 @@ wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/patches/2/cuda_8.0.61.2
 sh cuda_8.0.61_375.26_linux-run --silent
 sh cuda_8.0.61.2_linux-run --silent --accept-eula
 
-export PATH=/usr/local/cuda-8.0/bin:/usr/local/cuda-8.0/NsightCompute-2019.1${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64
+echo "export PATH=/usr/local/cuda-8.0/bin:/usr/local/cuda-8.0/NsightCompute-2019.1${PATH:+:${PATH}}" >> ~/.bashrc
+echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64" >> ~/.bashrc
 
 # gcc 5.4.0
 yum -y install gcc-c++ gmp-devel mpfr-devel libmpc-devel
