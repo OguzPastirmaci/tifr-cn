@@ -18,6 +18,7 @@ mkdir -p $INSTALL_DIR
 
 # CUDA
 yum remove -y "*cublas*" "cuda*"
+rm -rf /usr/local/cuda-8.0
 
 cd $INSTALL_DIR
 wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
