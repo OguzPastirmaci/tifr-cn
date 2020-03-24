@@ -18,22 +18,15 @@ rm -rf $INSTALL_DIR
 mkdir -p $INSTALL_DIR
 
 # CUDA
-yum remove -y "*cublas*" "cuda*"
-if [ -f /usr/local/cuda/bin/uninstall_cuda_8.0.pl ]
-then
-    /usr/local/cuda/bin/uninstall_cuda_8.0.pl
-else
-    rm -rf $CUDA_DIR
-fi
-
 cd $INSTALL_DIR
 wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
 wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/patches/2/cuda_8.0.61.2_linux-run
 sh cuda_8.0.61_375.26_linux-run --silent
 sh cuda_8.0.61.2_linux-run --silent --accept-eula
 
-echo "export PATH=/usr/local/cuda-8.0/bin:/usr/local/cuda-8.0/NsightCompute-2019.1${PATH:+:${PATH}}" >> ~/.bashrc
-echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64" >> ~/.bashrc
+echo "export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda-8.0/lib64:\$LD_LIBRARY_PATH" > /etc/profile.d/cuda.sh
+echo "export PATH=/usr/local/cuda-8.0/bin:/usr/local/cuda-8.0/NsightCompute-2019.1${PATH:+:${PATH}}" >> /etc/profile.d/cuda.sh
+source /etc/profile.d/cuda.sh
 
 # gcc 5.4.0
 #CURRENT_GCC_VERSION=$(gcc --version | grep gcc | awk '{print $3}')
