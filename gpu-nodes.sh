@@ -23,7 +23,7 @@ rm -rf /usr/local/cuda-8.0
 cd $INSTALL_DIR
 wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
 wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/patches/2/cuda_8.0.61.2_linux-run
-sh cuda_8.0.61_375.26_linux-run --silent --accept-eula
+sh cuda_8.0.61_375.26_linux-run --silent
 sh cuda_8.0.61.2_linux-run --silent --accept-eula
 
 echo "export PATH=/usr/local/cuda-8.0/bin:/usr/local/cuda-8.0/NsightCompute-2019.1${PATH:+:${PATH}}" >> ~/.bashrc
