@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -ex
 
 export INSTALL_DIR="/home/opc/dependencies"
 export CUDA_VERSION=8.0
