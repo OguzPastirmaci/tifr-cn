@@ -11,10 +11,22 @@ export CUDA_DIR=/usr/local/cuda-$CUDA_VERSION
 
 systemctl stop firewalld
 
-yum install -y oracle-epel-release-el7 oracle-release-el7 git
+yum install -y oracle-epel-release-el7 oracle-release-el7 git screen emacs
 
 rm -rf $INSTALL_DIR
 mkdir -p $INSTALL_DIR
+
+# CUDA
+yum remove -y "*cublas*" "cuda*"
+
+wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
+wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/patches/2/cuda_8.0.61.2_linux-run
+sh cuda_8.0.61_375.26_linux-run --silent
+sh cuda_8.0.61.2_linux-run --silent --accept-eula
+
+export PATH=/usr/local/cuda-8.0/bin:/usr/local/cuda-8.0/NsightCompute-2019.1${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64\
+                         ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 # gcc 5.4.0
 yum -y install gcc-c++ gmp-devel mpfr-devel libmpc-devel
@@ -78,7 +90,7 @@ tar zxvf gsl-2.4.tar.gz
 cd gsl-2.4
 mkdir -p /opt/gsl
 ./configure --prefix=/opt/gsl
-make
+make -j$(nproc)
 make check
 make install
 echo "export LD_LIBRARY_PATH=/opt/gsl/lib:$LD_LIBRARY_PATH" | sudo tee /etc/profile.d/gsl.sh
@@ -95,25 +107,12 @@ wget http://www.fftw.org/fftw-2.1.5.tar.gz
 tar zxvf fftw-2.1.5.tar.gz
 cd fftw-2.1.5
 ./configure --enable-type-prefix --enable-mpi
-make
+make -j$(nproc)
 make install
 make clean
 ./configure --enable-float --enable-type-prefix --enable-mpi
-make
+make -j$(nproc)
 make install
-
-# CUDA
-yum remove -y "*cublas*" "cuda*"
-
-wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
-wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/patches/2/cuda_8.0.61.2_linux-run
-sh cuda_8.0.61_375.26_linux-run --silent
-sh cuda_8.0.61.2_linux-run --silent --accept-eula
-
-export PATH=/usr/local/cuda-8.0/bin:/usr/local/cuda-8.0/NsightCompute-2019.1${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64\
-                         ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
 
 # PYTHON, NUMPY, SCIPY, MATPLOTLIB
 yum -y install gcc openssl-devel bzip2-devel
