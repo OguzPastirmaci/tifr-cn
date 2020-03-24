@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Yorick
 wget https://github.com/LLNL/yorick/archive/y_2_1_06.tar.gz
 tar zxvf y_2_1_06.tar.gz
 make install

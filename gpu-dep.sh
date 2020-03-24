@@ -75,12 +75,19 @@ make install
 # CUDA 10
 ln -sfn /usr/local/cuda/bin/nvcc /usr/bin/nvcc
 
+ln -s /usr/local/cuda-10.1 /usr/local/cuda
+
 # PYTHON, NUMPY, SCIPY, MATPLOTLIB
 yum -y install python3
 yum -y install python-devel
 yum -y install python3-devel
 python3 -m pip install --upgrade pip
 python3 -m pip install --user numpy==1.12.1 scipy==0.19 matplotlib==2.0.0
+
+# YORICK 2.1.06
+wget https://github.com/LLNL/yorick/archive/y_2_1_06.tar.gz
+tar zxvf y_2_1_06.tar.gz
+make install
 
 # NFS
 mkdir /mnt/nfs-share

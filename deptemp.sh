@@ -12,8 +12,8 @@ mkdir -p $INSTALL_DIR
 cd $INSTALL_DIR
 yum groupinstall -y 'Development Tools'
 yum -y install devtoolset-8 gcc-c++ zlib-devel
-wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.1rc1.tar.gz
-tar zxvf openmpi-3.1.1rc1.tar.gz
+wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.1.tar.gz
+tar zxvf openmpi-3.1.1.tar.gz
 cd openmpi-3.1.1rc1
 ./configure --prefix=/usr/local --with-cuda
 make all install
