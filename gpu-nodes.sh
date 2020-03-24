@@ -8,7 +8,7 @@ export UCX_DIR=$INSTALL_DIR/ucx
 export GDR_DIR=$INSTALL_DIR/gdrcopy
 export LD_LIBRARY_PATH=$GDR_DIR/lib64:$LD_LIBRARY_PATH
 export CUDA_DIR=/usr/local/cuda-$CUDA_VERSION
-export GCC_VERSION=5.4.0
+export GCC_VERSION="5.4.0"
 
 systemctl stop firewalld
 
@@ -32,7 +32,7 @@ echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64" >> ~/.b
 
 # gcc 5.4.0
 CURRENT_GCC_VERSION=$(gcc --version | grep gcc | awk '{print $3}')
-if [ $GCC_VERSION != $CURRENT_GCC_VERSION ]
+if [ "$GCC_VERSION" != "$CURRENT_GCC_VERSION" ]
 then
     yum -y install gcc-c++ gmp-devel mpfr-devel libmpc-devel
     cd $INSTALL_DIR
