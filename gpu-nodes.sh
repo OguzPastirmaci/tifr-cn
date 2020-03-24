@@ -8,7 +8,7 @@ export UCX_DIR=$INSTALL_DIR/ucx
 export GDR_DIR=$INSTALL_DIR/gdrcopy
 export LD_LIBRARY_PATH=$GDR_DIR/lib64:$LD_LIBRARY_PATH
 export CUDA_DIR=/usr/local/cuda-$CUDA_VERSION
-export GCC_VERSION="5.4.0"
+GCC_VERSION="5.4.0"
 
 systemctl stop firewalld
 
