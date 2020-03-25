@@ -63,7 +63,7 @@ cd ucx
 ./autogen.sh
 mkdir build
 cd build
-../contrib/configure-release --prefix=$UCX_DIR --with-cuda=$CUDA_DIR --with-gdrcopy=$GDR_DIR
+../contrib/configure-release --prefix=$UCX_DIR --with-cuda=/usr/local/cuda-10.1 --with-gdrcopy=$GDR_DIR
 make -j$(nproc)
 make -j$(nproc) install
 
