@@ -18,11 +18,11 @@ rm -rf $INSTALL_DIR
 mkdir -p $INSTALL_DIR
 
 # CUDA
-#cd $INSTALL_DIR
-#wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
-#wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/patches/2/cuda_8.0.61.2_linux-run
-#sh cuda_8.0.61_375.26_linux-run --silent
-#sh cuda_8.0.61.2_linux-run --silent --accept-eula
+cd $INSTALL_DIR
+wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run
+wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/patches/2/cuda_8.0.61.2_linux-run
+sh cuda_8.0.61_375.26_linux-run --silent
+sh cuda_8.0.61.2_linux-run --silent --accept-eula
 
 echo "export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda-8.0/lib64:\$LD_LIBRARY_PATH" > /etc/profile.d/cuda.sh
 echo "export PATH=/usr/local/cuda-8.0/bin:/usr/local/cuda-8.0/NsightCompute-2019.1${PATH:+:${PATH}}" >> /etc/profile.d/cuda.sh
@@ -63,7 +63,7 @@ cd ucx
 ./autogen.sh
 mkdir build
 cd build
-../contrib/configure-release --prefix=$UCX_DIR --with-cuda=/usr/local/cuda-10.0 --with-gdrcopy=$GDR_DIR
+../contrib/configure-release --prefix=$UCX_DIR --with-cuda=/usr/local/cuda-10.1 --with-gdrcopy=$GDR_DIR
 make -j$(nproc)
 make -j$(nproc) install
 
