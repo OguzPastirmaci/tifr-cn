@@ -29,20 +29,20 @@ echo "export PATH=/usr/local/cuda-8.0/bin:/usr/local/cuda-8.0/NsightCompute-2019
 source /etc/profile.d/cuda.sh
 
 # gcc 5.4.0
-#CURRENT_GCC_VERSION=$(gcc --version | grep gcc | awk '{print $3}')
-#if [ "$CURRENT_GCC_VERSION" != "$GCC_VERSION" ]
-#then
-#    yum -y install gcc-c++ gmp-devel mpfr-devel libmpc-devel
-#    cd $INSTALL_DIR
-#    wget https://ftp.gnu.org/gnu/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2
-#    tar jxvf gcc-5.4.0.tar.bz2
-#    mkdir gcc-5.4.0-build
-#    cd gcc-5.4.0-build
-#    ../gcc-5.4.0/configure --enable-languages=c,c++ --disable-multilib
-#    make -j$(nproc) && make install
-#    export PATH=/usr/local/bin:$PATH
-#    echo "export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH" | sudo tee /etc/profile.d/gcc.sh
-#fi
+CURRENT_GCC_VERSION=$(gcc --version | grep gcc | awk '{print $3}')
+if [ "$CURRENT_GCC_VERSION" != "$GCC_VERSION" ]
+then
+    yum -y install gcc-c++ gmp-devel mpfr-devel libmpc-devel
+    cd $INSTALL_DIR
+    wget https://ftp.gnu.org/gnu/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2
+    tar jxvf gcc-5.4.0.tar.bz2
+    mkdir gcc-5.4.0-build
+    cd gcc-5.4.0-build
+    ../gcc-5.4.0/configure --enable-languages=c,c++ --disable-multilib
+    make -j$(nproc) && make install
+    export PATH=/usr/local/bin:$PATH
+    echo "export LD_LIBRARY_PATH=/usr/local/lib64:$LD_LIBRARY_PATH" | sudo tee /etc/profile.d/gcc.sh
+fi
 
 # GDRCopy
 cd $INSTALL_DIR
