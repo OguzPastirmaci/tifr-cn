@@ -71,7 +71,7 @@ make -j$(nproc) install
 cd $INSTALL_DIR
 wget https://download.open-mpi.org/release/open-mpi/v3.1/openmpi-3.1.6.tar.gz
 tar zxvf openmpi-3.1.6.tar.gz
-cd openmpi-3.1.6.tar.gz
+cd openmpi-3.1.6
 ./configure --with-cuda=$CUDA_DIR --with-ucx=$UCX_DIR
 make -j$(nproc)
 make -j$(nproc) install
