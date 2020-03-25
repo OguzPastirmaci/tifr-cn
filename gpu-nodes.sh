@@ -100,7 +100,6 @@ make install
 echo "export LD_LIBRARY_PATH=/opt/gsl/lib:$LD_LIBRARY_PATH" | sudo tee /etc/profile.d/gsl.sh
 
 # INTEL MKL 2017
-#yum-config-manager --add-repo https://yum.repos.intel.com/setup/intelproducts.repo
 yum-config-manager --add-repo https://yum.repos.intel.com/mkl/setup/intel-mkl.repo
 rpm --import https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
 yum -y install intel-mkl-2017.4-061.x86_64
@@ -119,7 +118,7 @@ make -j$(nproc)
 make install
 
 # PYTHON, NUMPY, SCIPY, MATPLOTLIB
-yum -y install gcc openssl-devel bzip2-devel
+yum -y install gcc openssl-devel bzip2-devel python3
 cd /usr/src
 wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz
 tar xzf Python-2.7.13.tgz
@@ -130,8 +129,8 @@ make altinstall
 curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
 python2.7 get-pip.py
 
-python -m pip install --user numpy==1.12.1 scipy==0.19 matplotlib==2.0.2
-python3 -m pip install --user numpy==1.13.1 scipy==0.19.1 matplotlib==2.0.2
+python2.7 -m pip install --user numpy==1.12.1 scipy==0.19 matplotlib==2.0.2
+python3.6 -m pip install --user numpy==1.13.1 scipy==0.19.1 matplotlib==2.0.2
 
 # YORICK 2.1.06
 cd $INSTALL_DIR
