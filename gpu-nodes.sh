@@ -136,6 +136,7 @@ python3.6 -m pip install --user numpy==1.13.1 scipy==0.19.1 matplotlib==2.0.2
 cd $INSTALL_DIR
 wget https://github.com/LLNL/yorick/archive/y_2_1_06.tar.gz
 tar zxvf y_2_1_06.tar.gz
+cd y_2_1_06
 make install
 
 rm $INSTALL_DIR/*.tar.gz
