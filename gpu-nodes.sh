@@ -3,7 +3,7 @@
 set -ex
 
 export INSTALL_DIR="/home/opc/dependencies"
-export CUDA_VERSION=8.0
+export CUDA_VERSION=10.1
 export UCX_DIR=$INSTALL_DIR/ucx
 export GDR_DIR=$INSTALL_DIR/gdrcopy
 export LD_LIBRARY_PATH=$GDR_DIR/lib64:$LD_LIBRARY_PATH
@@ -63,7 +63,7 @@ cd ucx
 ./autogen.sh
 mkdir build
 cd build
-../contrib/configure-release --prefix=$UCX_DIR --with-cuda=/usr/local/cuda-10.1 --with-gdrcopy=$GDR_DIR
+../contrib/configure-release --prefix=$UCX_DIR --with-cuda=$CUDA_DIR --with-gdrcopy=$GDR_DIR
 make -j$(nproc)
 make -j$(nproc) install
 
